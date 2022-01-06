@@ -1,18 +1,29 @@
-const addNumbers = function (
-  n1: number,
-  n2: number,
-  showResult: boolean,
-  phrase: string
-) {
-  showResult && console.log(`${phrase} ${n1 + n2}`);
-  if (!showResult) {
-    return n1 + n2;
-  }
+// const person: {
+//   name: string;
+//   age: number;
+// } = {
+const person = {
+  name: "Janey",
+  age: 32,
 };
 
-const number1 = 5;
-const number2 = 5.8;
-const printResult = true;
-const resultPhrase = "And the result is:";
+console.log(person);
 
-addNumbers(number1, number2, printResult, resultPhrase);
+const product: {
+  id: string;
+  price: number;
+  tags: string[];
+  details: {
+    title: string;
+    description: string;
+  };
+} = {
+  id: "abc1",
+  price: 12.99,
+  tags: ["great-offer", "hot-and-new"],
+  details: {
+    title: "Red Carpet",
+    description: "A great carpet - almost brand-new!",
+  },
+};
+console.log(product.tags[1]);
