@@ -1,7 +1,10 @@
+type CanCombine = number | string;
+type ConversitonDesc = "as-number" | "as-string";
+
 const combine = function (
-  input1: number | string,
-  input2: number | string,
-  resultConversion: string
+  input1: CanCombine,
+  input2: CanCombine,
+  resultConversion: ConversitonDesc
 ) {
   let result;
   if (
@@ -23,7 +26,7 @@ const combine = function (
 const combinedAges = combine(30, 26, "as-number");
 console.log(combinedAges);
 
-const combinedNames = combine("Max", "Anna", "as-text");
+const combinedNames = combine("Max", "Anna", "as-string");
 console.log(combinedNames);
 
 const combinedStringAges = combine("22", "23", "as-number");
