@@ -31,3 +31,16 @@ console.log(combinedNames);
 
 const combinedStringAges = combine("22", "23", "as-number");
 console.log(combinedStringAges);
+
+type User = { name: string; age: number };
+const a1: User = { name: "Janey", age: 32 };
+
+type UserD = { name: string; age: number };
+
+function greet(user: UserD) {
+  console.log("Hi, I am " + user.name);
+}
+
+function isOlder(user: UserD, checkAge: number) {
+  return checkAge > user.age;
+}
