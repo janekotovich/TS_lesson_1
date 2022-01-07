@@ -2,10 +2,40 @@
 //   name: string;
 //   age: number;
 // } = {
+// const person: {
+//   name: string;
+//   age: number;
+//   hobbies: string[];
+//   role: [number, string];
+// } = {
+//   name: "Janey",
+//   age: 32,
+//   hobbies: ["Sports", "Cooking"],
+//   role: [2, "author"],
+// };
+
+// const ADMIN = 0;
+// const READ_ONLY = 1;
+// const AUTHOR = 2;
+
+enum Role {
+  ADMIN = 5,
+  READ_ONLY,
+  AUTHOR,
+}
+
+enum Course {
+  MATH = "Math",
+  LIT = 8,
+  PHIS,
+}
+
 const person = {
   name: "Janey",
   age: 32,
   hobbies: ["Sports", "Cooking"],
+  role: Role.ADMIN,
+  course: Course.PHIS,
 };
 
 console.log(person);
@@ -33,3 +63,7 @@ const product: {
 };
 console.log(product.tags[1]);
 person.hobbies.forEach((hobbie) => console.log(hobbie.toUpperCase()));
+
+console.log(person.role === 5);
+console.log(person.role === 6);
+console.log(person.course);
