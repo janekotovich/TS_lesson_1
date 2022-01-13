@@ -8,3 +8,14 @@ function printResult(num: number): void {
 printResult(add(5, 12));
 
 let someValue: undefined;
+
+//////////////////////////
+// Function as Types
+
+// let combineValues: Function;
+// let combineValues: () => number;
+let combineValues: (a: number, b: number) => number;
+// combineValues=printResult - wrong as well bcs we dont want to change function
+combineValues = add;
+// combineValues = 5;
+console.log(combineValues(8, 8));
