@@ -12,3 +12,13 @@ if (typeof userInput === "string") {
 // }
 // let result = generateError("An error occured", 700);
 // console.log(result);
+
+const button = document.querySelector("button");
+
+function clickHandler(message: string) {
+  console.log("CLICKED" + message);
+}
+
+if (button) {
+  button.addEventListener("click", clickHandler.bind(null, "You are welcome"));
+}
