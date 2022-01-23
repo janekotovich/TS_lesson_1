@@ -22,3 +22,10 @@ function clickHandler(message: string) {
 if (button) {
   button.addEventListener("click", clickHandler.bind(null, "You are welcome"));
 }
+
+function addings(b: number, d: number) {
+  if (b + d > 0) {
+    return b + d;
+  }
+  return;
+}
