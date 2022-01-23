@@ -12,7 +12,7 @@ const addNumbers = function (
 
 const number1 = 5;
 const number2 = 5.8;
-const printResult = true;
+// const printResult = true;
 const resultPhrase = "And the result is:";
 
-addNumbers(number1, number2, printResult, resultPhrase);
+// addNumbers(number1, number2, printResult, resultPhrase);
