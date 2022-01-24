@@ -22,3 +22,15 @@ function addAgain(a: number, b: number) {
 //   }
 //   //Not gonna work - let - block scope!
 //   console.log(isOld);
+
+const arrowAdd = (a: number, b: number) => a + b;
+
+console.log(arrowAdd(7, 27));
+
+const printOutput: (a: number | string) => void = (output) =>
+  console.log(output);
+
+const button = document.querySelector("button");
+if (button) {
+  button.addEventListener("click", (e) => console.log(e));
+}
