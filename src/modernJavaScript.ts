@@ -52,3 +52,10 @@ const simplePerson = {
 
 //to real copy
 const sopySimplePerson = { ...simplePerson };
+
+const adddersAgain = (...numbers: number[]) =>
+  numbers.reduce((currResult, currentVal) => currResult + currentVal, 0);
+const addedNumbersOne = adddersAgain(2, 3, 4, 5, 6, 7);
+const addedNumbersTwo = adddersAgain(11, 12);
+console.log(addedNumbersOne);
+console.log(addedNumbersTwo);
