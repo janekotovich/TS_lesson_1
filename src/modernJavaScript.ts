@@ -1,8 +1,8 @@
 const Username = "Jane";
 // Username = "janey";
 
-let age = 23;
-age = 32;
+// let age = 23;
+// age = 32;
 
 // global scope
 var result;
@@ -46,7 +46,7 @@ activeHobbies.push(...hobbies);
 console.log(activeHobbies);
 
 const simplePerson = {
-  name: "Jane",
+  firstName: "Jane",
   age: 32,
 };
 
@@ -59,3 +59,12 @@ const addedNumbersOne = adddersAgain(2, 3, 4, 5, 6, 7);
 const addedNumbersTwo = adddersAgain(11, 12);
 console.log(addedNumbersOne);
 console.log(addedNumbersTwo);
+
+const longerHoobies = ["Surf", "Rock", "Panckake"];
+const [hoobbie1, hobbie2, hobbie3] = longerHoobies;
+console.log(hobbie2);
+const [h1, , h3] = longerHoobies;
+console.log(h3);
+
+const { firstName, age } = simplePerson;
+console.log(age);
