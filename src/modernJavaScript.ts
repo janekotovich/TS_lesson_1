@@ -37,3 +37,18 @@ if (buttonSm) {
 
 //set default from the right!
 console.log(arrowAdd(7));
+
+const hobbies = ["Sports", "Cooking"];
+const activeHobbies = ["Surfing"];
+
+activeHobbies.push(...hobbies);
+
+console.log(activeHobbies);
+
+const simplePerson = {
+  name: "Jane",
+  age: 32,
+};
+
+//to real copy
+const sopySimplePerson = { ...simplePerson };
