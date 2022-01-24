@@ -23,14 +23,17 @@ function addAgain(a: number, b: number) {
 //   //Not gonna work - let - block scope!
 //   console.log(isOld);
 
-const arrowAdd = (a: number, b: number) => a + b;
+const arrowAdd = (a: number, b: number = 1) => a + b;
 
 console.log(arrowAdd(7, 27));
 
 const printOutput: (a: number | string) => void = (output) =>
   console.log(output);
 
-const button = document.querySelector("button");
-if (button) {
-  button.addEventListener("click", (e) => console.log(e));
+const buttonSm = document.querySelector("button");
+if (buttonSm) {
+  buttonSm.addEventListener("click", (e) => console.log(e));
 }
+
+//set default from the right!
+console.log(arrowAdd(7));
