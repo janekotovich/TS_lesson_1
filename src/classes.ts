@@ -29,3 +29,13 @@ marketing.addEmployee("James");
 marketing.addEmployee("Jackson");
 marketing.describe();
 marketing.printEmployeesInfo();
+
+class ItDepartment extends Department {
+  constructor(id: string, color: string, public admins: string[]) {
+    super("IT", id, color);
+    this.admins = admins;
+  }
+}
+
+const newItD = new ItDepartment("333", "red", ["Bob", "Jack"]);
+console.log(newItD);
