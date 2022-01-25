@@ -1,6 +1,6 @@
 class Department {
   name: string;
-  private employees: string[] = [];
+  protected employees: string[] = [];
   constructor(n: string, private readonly id: string, public color: string) {
     this.name = n;
     this.id = id;
@@ -35,7 +35,16 @@ class ItDepartment extends Department {
     super("IT", id, color);
     this.admins = admins;
   }
+  addEmployee(name: string) {
+    if (name === "Andrew") {
+      return;
+    }
+    this.employees.push(name);
+  }
 }
 
 const newItD = new ItDepartment("333", "red", ["Bob", "Jack"]);
+console.log(newItD);
+newItD.addEmployee("Buddy");
+newItD.addEmployee("Andrew");
 console.log(newItD);
