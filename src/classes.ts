@@ -1,4 +1,5 @@
 class Department {
+  static fiscalYear = 2020;
   name: string;
   protected employees: string[] = [];
   constructor(n: string, private readonly id: string, public color: string) {
@@ -6,6 +7,10 @@ class Department {
     this.id = id;
     this.color = color;
     this.describe();
+  }
+
+  static createEmployee(name: string) {
+    return { name: name };
   }
   describe(this: Department) {
     console.log(`Department ${this.name} ${this.id}`);
@@ -77,3 +82,6 @@ console.log(accounting.mostRecentReport);
 newItD.addEmployee("Andrew");
 
 console.log(newItD);
+const employee1 = Department.createEmployee("Max");
+console.log(employee1);
+console.log(Department.fiscalYear);
