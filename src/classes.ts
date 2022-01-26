@@ -1,4 +1,4 @@
-class Department {
+abstract class Department {
   static fiscalYear = 2020;
   name: string;
   protected employees: string[] = [];
@@ -12,9 +12,8 @@ class Department {
   static createEmployee(name: string) {
     return { name: name };
   }
-  describe(this: Department) {
-    console.log(`Department ${this.name} ${this.id}`);
-  }
+  abstract describe(this: Department): void;
+
   addEmployee(employee: string) {
     this.employees.push(employee);
   }
@@ -24,16 +23,16 @@ class Department {
   }
 }
 
-const marketing = new Department("Marketing", "123", "Blue");
-console.log(marketing);
+// const marketing = new Department("Marketing", "123", "Blue");
+// console.log(marketing);
 
-marketing.describe();
-// const marketingCopy = { name: "S", describe: marketing.describe };
-// marketingCopy.describe();
-marketing.addEmployee("James");
-marketing.addEmployee("Jackson");
-marketing.describe();
-marketing.printEmployeesInfo();
+// marketing.describe();
+// // const marketingCopy = { name: "S", describe: marketing.describe };
+// // marketingCopy.describe();
+// marketing.addEmployee("James");
+// marketing.addEmployee("Jackson");
+// marketing.describe();
+// marketing.printEmployeesInfo();
 
 class ItDepartment extends Department {
   constructor(id: string, color: string, public admins: string[]) {
@@ -46,10 +45,14 @@ class ItDepartment extends Department {
     }
     this.employees.push(name);
   }
+  describe() {
+    console.log("It Depatment");
+  }
 }
 
 class Accounnting extends Department {
   private lastReport: string;
+  private static instance: Accounnting;
 
   get mostRecentReport() {
     if (this.lastReport) return this.lastReport;
@@ -63,25 +66,39 @@ class Accounnting extends Department {
     this.addReport(value);
   }
 
-  constructor(private reports: string[]) {
+  private constructor(private reports: string[]) {
     super("Accounting", "7", "pink");
     this.lastReport = reports[0];
+  }
+
+  static getInstance() {
+    if (Accounnting.instance) {
+      return this.instance;
+    }
+    this.instance = new Accounnting([]);
+    return this.instance;
   }
   addReport(text: string) {
     this.reports.push(text);
     this.lastReport = text;
+  }
+  describe() {
+    console.log(`Accounting department lastreport - ${this.lastReport}`);
   }
 }
 
 const newItD = new ItDepartment("333", "red", ["Bob", "Jack"]);
 console.log(newItD);
 newItD.addEmployee("Buddy");
-const accounting = new Accounnting([]);
-accounting.mostRecentReport = "Year end report";
-console.log(accounting.mostRecentReport);
+// const accounting = new Accounnting([]);
+// accounting.mostRecentReport = "Year end report";
+// console.log(accounting.mostRecentReport);
 newItD.addEmployee("Andrew");
 
 console.log(newItD);
 const employee1 = Department.createEmployee("Max");
 console.log(employee1);
 console.log(Department.fiscalYear);
+// accounting.describe();
+
+const accounting = Accounnting.getInstance();
