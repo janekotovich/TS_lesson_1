@@ -3,6 +3,7 @@ interface Greetable {
 }
 interface Named {
   readonly name: string;
+  outputName?: string;
 }
 // let user1: Greetable;
 
@@ -17,8 +18,12 @@ interface Named {
 
 class Person implements Greetable, Named {
   name: string;
-  constructor(n: string) {
+  age?: number;
+  constructor(n: string, age?: number) {
     this.name = n;
+    if (age) {
+      this.age = age;
+    }
   }
   greet(phrase: string) {
     console.log(phrase + " " + this.name);
