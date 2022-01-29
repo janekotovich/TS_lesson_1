@@ -46,3 +46,17 @@ class basket1 implements Basket {
     console.log(`This basket has ${this.apple}`);
   }
 }
+
+type AddFn = (a: number, b: number) => number;
+
+let newAddFunction: AddFn;
+
+newAddFunction = (n1: number, n2: number) => n1 + n2;
+
+interface AddFnInterface {
+  (a: number, b: number): number;
+}
+
+let newAddFunctionUseInterface: AddFnInterface;
+
+newAddFunctionUseInterface = (n1: number, n2: number) => n1 + n2;
