@@ -111,3 +111,13 @@ const userInputElement = document.getElementById(
   "user_input"
 )! as HTMLInputElement;
 userInputElement.value = "Hi there!";
+
+interface ErrorContainer {
+  // id: string;
+  // { email: "Not a valid email", username: "Must start with a character"}
+  [key: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: "Not a valid email",
+};
