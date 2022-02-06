@@ -16,17 +16,17 @@ const e1: ElevatedEmployee = {
   startDate: new Date(),
 };
 
-type Combinable = string | number;
-type Numeric = number | boolean;
+// type Combinable = string | number;
+// type Numeric = number | boolean;
 
-type Universal = Combinable & Numeric;
+// type Universal = Combinable & Numeric;
 
-function addCombinable(a: Combinable, b: Combinable) {
-  if (typeof a === "string" || typeof b === "string") {
-    return a.toString() + b.toString();
-  }
-  return a + b;
-}
+// function addCombinable(a: Combinable, b: Combinable) {
+//   if (typeof a === "string" || typeof b === "string") {
+//     return a.toString() + b.toString();
+//   }
+//   return a + b;
+// }
 
 type UnknownEmployee = GeneralEmployee | Admin;
 
@@ -121,3 +121,25 @@ interface ErrorContainer {
 const errorBag: ErrorContainer = {
   email: "Not a valid email",
 };
+
+type Combinable = string | number;
+type Numeric = number | boolean;
+
+type Universal = Combinable & Numeric;
+
+function addCombinable(a: number, b: number): number;
+function addCombinable(a: string, b: string): string;
+// TS merges function information above and functiuon declaration below togther
+function addCombinable(a: Combinable, b: Combinable) {
+  if (typeof a === "string" || typeof b === "string") {
+    return a.toString() + b.toString();
+  }
+  return a + b;
+}
+
+const resultOfComb = addCombinable(1, 5);
+// const stringResultofCombinable = addCombinable("hey", "you") as string;
+const stringResultofCombinable = addCombinable("hey", "you");
+// TS not sure which one we get back - string or number - though doesnt let you call a string method
+// thats why we specify that it would be string
+stringResultofCombinable.split(" ");
