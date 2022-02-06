@@ -160,3 +160,12 @@ const fetchedUserData = {
 // optional chaining helps us safely chain access
 
 console.log(fetchedUserData?.job?.title);
+
+const userInputs = "";
+// but if userInputs = "" - default fallback cicks in even though shouldnt
+const storedData = userInputs || "DEFAULT";
+
+console.log(storedData);
+// nulish coalescing operato - only cuts out Null or Undefined!
+const nulishStoreData = userInputs ?? "DEFAULT";
+console.log(nulishStoreData);
