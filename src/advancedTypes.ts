@@ -143,3 +143,20 @@ const stringResultofCombinable = addCombinable("hey", "you");
 // TS not sure which one we get back - string or number - though doesnt let you call a string method
 // thats why we specify that it would be string
 stringResultofCombinable.split(" ");
+//function oveload helps when ts cannot infer what you get back by its own
+
+// OPtional chaining
+// You not sure about certainity - like fetching API
+
+const fetchedUserData = {
+  id: "u1",
+  name: "Janw",
+  job: {
+    title: "Little title",
+    description: "Bigger description",
+  },
+};
+
+// optional chaining helps us safely chain access
+
+console.log(fetchedUserData?.job?.title);
