@@ -73,6 +73,7 @@ textStorage.addItem("Ginger");
 textStorage.removeItem("Cat");
 console.log(textStorage);
 
+// because due to object structure you have to pass specifically same object, not a reference to it
 // const objStorage = new DataStorage<object>();
 // const miloObj = { name: "Milo" };
 // const maryObj = { name: "Mary" };
@@ -82,3 +83,21 @@ console.log(textStorage);
 // //
 // objStorage.removeItem(miloObj);
 // console.log(objStorage.getItems());
+
+// Generic Utility Types
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntil: Date;
+}
+
+function createCourseGoal(
+  title: string,
+  description: string,
+  date: Date
+): CourseGoal {
+  let courseGoal: CourseGoal = {};
+  courseGoal.title = title;
+  courseGoal.description = description;
+  courseGoal.completeUntil = date;
+}
