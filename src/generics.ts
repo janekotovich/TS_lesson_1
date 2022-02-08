@@ -96,8 +96,14 @@ function createCourseGoal(
   description: string,
   date: Date
 ): CourseGoal {
-  let courseGoal: CourseGoal = {};
+  let courseGoal: Partial<CourseGoal> = {};
   courseGoal.title = title;
   courseGoal.description = description;
   courseGoal.completeUntil = date;
+  return courseGoal as CourseGoal;
 }
+
+const names: Readonly<string[]> = ["Jane", "Surf"];
+// cannot do any changes with Readonly - no add props no change props
+// names.push("Ginger");
+// names.pop("Jane");
