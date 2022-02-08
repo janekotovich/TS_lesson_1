@@ -107,3 +107,9 @@ const names: Readonly<string[]> = ["Jane", "Surf"];
 // cannot do any changes with Readonly - no add props no change props
 // names.push("Ginger");
 // names.pop("Jane");
+
+//Generic types vs Union
+// Union - gives mixed ability - you can add a mixed els
+let mixedArr: string[] | number[] | boolean[] = [];
+
+//then if further you neeed string method - you not sure are all els strings or no
