@@ -113,3 +113,29 @@ class Product {
 }
 
 // when do decorators execute - at the moment when you defining a class!
+
+function AutoBind(_: any, _2: string | Symbol, descriptor: PropertyDescriptor) {
+  const originalMethod = descriptor.value;
+  const adjDescriptor: PropertyDescriptor = {
+    configurable: true,
+    enumerable: false,
+    get() {
+      const boundFunction = originalMethod.bind(this);
+      return boundFunction;
+    },
+  };
+  return adjDescriptor;
+}
+
+class Printer {
+  message = "This works!";
+  @AutoBind
+  showMessage() {
+    console.log(this.message);
+  }
+}
+
+const p = new Printer();
+const newButton = document.querySelector("button")!;
+// newButton.addEventListener("click", p.showMessage.bind(p));
+newButton.addEventListener("click", p.showMessage);

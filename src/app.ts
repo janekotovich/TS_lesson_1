@@ -16,12 +16,12 @@ if (typeof userInput === "string") {
 const button = document.querySelector("button");
 
 function clickHandler(message: string) {
-  console.log("CLICKED" + message);
+  // console.log("CLICKED" + message);
 }
 
-if (button) {
-  button.addEventListener("click", clickHandler.bind(null, "You are welcome"));
-}
+// if (button) {
+//   button.addEventListener("click", clickHandler.bind(null, "You are welcome"));
+// }
 
 function addings(b: number, d: number) {
   if (b + d > 0) {
