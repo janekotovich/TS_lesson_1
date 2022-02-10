@@ -140,19 +140,56 @@ const newButton = document.querySelector("button")!;
 // newButton.addEventListener("click", p.showMessage.bind(p));
 newButton.addEventListener("click", p.showMessage);
 
+// interface for validation
+interface ValidatorConfig {
+  [property: string]: {
+    [validatableProp: string]: string[]; // ['required', 'positive']
+  };
+}
+
+const registeredValidators: ValidatorConfig = {};
 // Validation with decorators
-function Required() {}
-function PositiveNumber() {}
-function Validate(obj: object){}
+function Required(target: any, propName: string) {
+  registeredValidators[target.constructor.name] = {
+    ...registeredValidators[target.constructor.name],
+    [propName]: ["required"],
+  };
+}
+function PositiveNumber(target: any, propName: string) {
+  registeredValidators[target.constructor.name] = {
+    ...registeredValidators[target.constructor.name],
+    [propName]: ["positive"],
+  };
+}
+function Validate(obj: any) {
+  const objectValidatorConfig = registeredValidators[obj.constructor.name];
+  if (!objectValidatorConfig) {
+    return true;
+  }
+  let isValid = true;
+  for (const prop in objectValidatorConfig) {
+    for (const validator of objectValidatorConfig[prop]) {
+      switch (validator) {
+        case "required":
+          isValid = isValid && !!obj[prop];
+          break;
+        case "positive":
+          isValid = isValid && obj[prop] > 0;
+          break;
+      }
+    }
+  }
+  return isValid;
+}
 
 class Courses {
+  @Required
   title: string;
+  @PositiveNumber
   price: number;
 
   constructor(t: string, p: number) {
-    @Required
     this.title = t;
-    @PositiveNumber
     this.price = p;
   }
 }
@@ -168,8 +205,8 @@ courseForm.addEventListener("submit", (e) => {
   const price = +priceEl.value;
 
   const createdCourse = new Courses(title, price);
-  if(!Validate(createdCourse)){
-    throw new Error("Invalid input! Please try again")
+  if (!Validate(createdCourse)) {
+    throw new Error("Invalid input! Please try again");
   }
   console.log(createdCourse);
 });
