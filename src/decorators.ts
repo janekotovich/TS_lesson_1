@@ -102,3 +102,5 @@ class Product {
     return this.price * (1 + tax);
   }
 }
+
+// when do decorators execute - at the moment when you defining a class!
