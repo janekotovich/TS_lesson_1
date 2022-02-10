@@ -57,10 +57,12 @@ class Persons2 {
 const newPerson2 = new Persons2();
 
 function Log2(target: any, name: string, descriptor: PropertyDescriptor) {
+  // :PropertyDescriptor
   console.log("Accessor decorator");
   console.log(target);
   console.log(name);
   console.log(descriptor);
+  // return {}
 }
 
 function Log(target: any, propertyName: string | Symbol) {
